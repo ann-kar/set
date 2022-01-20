@@ -1,0 +1,49 @@
+
+.Symbol {
+  height: 85%;
+  width: 25%;
+  height: 85px;
+  width: calc(150px / 4);
+  margin: 5px;
+  z-index: 3;
+  stroke: var(--color2);
+  stroke-width: 10px;
+
+  & > * {
+    height: 85px;
+    width: calc(150px / 4);
+  }
+}
+
+
+/*colors*/
+
+.violet {
+  --color: rgba(94, 43, 138,0.3);
+  --color2: rgb(94, 43, 138);
+}
+
+.red {
+  --color: rgba(255,0,0,0.3);
+  --color2: rgb(255,0,0);
+}
+
+.green {
+  --color: rgba(55, 138, 43,0.3);
+  --color2: rgb(55, 138, 43);
+}
+
+/*fills*/
+
+.shaded {
+  fill: url(#myPattern);
+}
+
+.filled {
+  fill: var(--color);
+}
+
+.blank {
+  fill: transparent;
+}
+
