@@ -1,0 +1,13 @@
+@import '../../App.scss';
+
+.TabWrapper {
+    display: flex;
+    flex-wrap: wrap;
+    background: indigo;
+    height: $cardHeight * 3 + $cardMargin * 6;
+    width: $cardWidth * 4 + $cardMargin * 8;
+    box-sizing: content-box;
+    padding: $cardMargin;
+    background: rgba(255,255,255,0.3);
+}
+  

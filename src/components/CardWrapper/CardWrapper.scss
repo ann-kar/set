@@ -1,0 +1,10 @@
+@import '../../App.scss';
+
+.CardWrapper {
+    height: $cardHeight;
+    width: $cardWidth;
+    margin: $cardMargin;
+    background: #fff;
+    border: 1px solid rgba(0,0,0,0.3);
+    border-radius: 10px;
+}
