@@ -1,27 +1,25 @@
-import React, { FC } from 'react';
-import { isPropertySignature } from 'typescript';
+import React from 'react';
+
 import './Card.scss';
 import Symbol from './Symbol/Symbol';
+import {ICard} from '../../ts/types';
 
-type CardProps = {
-    color?: string;
-    fill?: string;
-    number?: number;
-    shape?: string;
-    children?: any;
-}
+function Card({ color, fill, number, shape, handleCardClick, id, cardStatus }: ICard): JSX.Element {
 
-function Card ({color, fill, number, shape, children} : CardProps) : JSX.Element {
-  return (
+  const handleClick = (e: React.MouseEvent<HTMLDivElement>) => {
+  
+    handleCardClick(e);
    
-      <div className="Card">
-      {children}
-           {(color && fill && number && shape) ? 
-           Array(number).fill(0).map((el, i) => 
-            <Symbol color={color} fill={fill} shape={shape}/>) : null}
+  }
+
+    return (
+      <div className={`Card ${cardStatus}`} data-id={id} onClick={(e) => handleClick(e)}>
+        {color && fill && number && shape &&
+          Array(number).fill(0).map((el) =>
+            <Symbol color={color} fill={fill} shape={shape} />)}
       </div>
 
-  );
-}
+    );
+  }
 
-export default Card;
+  export default Card;

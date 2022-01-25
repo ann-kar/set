@@ -1,4 +1,4 @@
-import React, { FunctionComponent } from "react";
+import React from "react";
 
 import "./Symbol.scss";
 import Defs from './Defs/Defs';

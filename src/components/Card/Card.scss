@@ -1,7 +1,5 @@
 @import '../../App.scss';
 
-
-
 .Card {
     width: 150px;
     height: 100px;
@@ -9,9 +7,27 @@
     margin: 10px;
     display: flex;
     justify-content: center;
-    //filter: grayscale(80%);
     align-items: center;
     border: 1px solid gray;
     background: #fff;
-  
+}
+
+.Card-active {
+    background: rgba(94, 43, 138,0.3);
+    background-blend-mode: darken;
+}
+
+.Card-inactive {
+   background: white;
+   background-blend-mode: normal;
+}
+
+.Card-accepted {
+    background: green;
+    background-blend-mode: darken;
+}
+
+.Card-rejected {
+    background: red;
+    background-blend-mode: darken;
 }

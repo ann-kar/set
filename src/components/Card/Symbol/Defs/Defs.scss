@@ -1,13 +1,13 @@
 
 
-  .rect.violet {
-    fill: rgb(94, 43, 138);
-  }
-  
-  .rect.red {
-    fill:  rgb(255,0,0);
-  }
-  
-  .rect.green {
-    fill: rgb(55, 138, 43);
-  }  
+.shaded.red {
+  fill: url(#pattern-red);
+}
+
+.shaded.green {
+  fill: url(#pattern-green);
+}
+
+.shaded.violet {
+  fill: url(#pattern-violet);
+}

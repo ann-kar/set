@@ -8,6 +8,7 @@
   z-index: 3;
   stroke: var(--color2);
   stroke-width: 10px;
+  pointer-events: none;
 
   & > * {
     height: 85px;
@@ -35,10 +36,6 @@
 
 /*fills*/
 
-.shaded {
-  fill: url(#myPattern);
-}
-
 .filled {
   fill: var(--color);
 }
@@ -47,3 +44,14 @@
   fill: transparent;
 }
 
+.shaded.red {
+  fill: url(#pattern-red);
+}
+
+.shaded.green {
+  fill: url(#pattern-green);
+}
+
+.shaded.violet {
+  fill: url(#pattern-violet);
+}
