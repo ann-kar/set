@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 
 import './Game.scss';
-import Card from '../Card/Card';
+import {Button, Card } from '../../components';
 import { generateDeck, check, checkAll } from './utils';
 import { ICard, Status, ITabProps } from '../../ts/types';
 
@@ -147,7 +147,7 @@ function Game({ label }: ITabProps): JSX.Element {
     return (
         <div className="Game" data-id={label} >
             {visibleCards && renderVisibleCards()}
-            <button onClick={handleButton}>check</button>
+            <Button onClick={handleButton}>find set</Button>
         </div>
     );
 }

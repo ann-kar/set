@@ -3,4 +3,5 @@
 .Game {
     @extend %tabContent;
     flex-wrap: wrap;
+    position: relative;
 }
