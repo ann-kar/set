@@ -1,0 +1,30 @@
+@import '../../styles/main.scss';
+
+.CardPanel {
+   // background: rgba(255,255,255,0.2);
+    position: absolute;
+    height: 100%;
+    width: 25%;
+    display: flex;
+    flex-wrap: wrap;
+
+    &:nth-child(1n) {
+        top: 0;
+        left: calc(-25% - #{$cardMargin} * 2);
+    }
+    
+    &:nth-child(2n) {
+        top: 0;
+        left: unset;
+        right: calc(-25% - #{$cardMargin} * 2);
+    }
+    
+    &:nth-child(3n) {
+        top: unset;
+        left: 0;
+        right: unset;
+        bottom: calc(-33% - #{$cardMargin} * 2);
+        height: 33%;
+        width: 75%;
+    }
+}

@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 
 import './Game.scss';
-import {Button, Card } from '../../components';
+import {Button, Card, CardPanels } from '../../components';
 import { generateDeck, check, checkAll } from './utils';
 import { ICard, Status, ITabProps } from '../../ts/types';
 
@@ -128,8 +128,8 @@ function Game({ label }: ITabProps): JSX.Element {
         setVisibleCards(visibleCardsCopy);
     }
 
-    const renderVisibleCards = () => {
-        return visibleCards.map((card, i) => {
+    const renderVisibleCards = (cards: ICard[]) => {
+        return cards.map((card: ICard, i: number) => {
             return <Card
                 key={`card-${i}`}
                 handleCardClick={handleCardClick}
@@ -146,7 +146,7 @@ function Game({ label }: ITabProps): JSX.Element {
 
     return (
         <div className="Game" data-id={label} >
-            {visibleCards && renderVisibleCards()}
+            <CardPanels cards={visibleCards} renderCards={renderVisibleCards}/>
             <Button onClick={handleButton}>find set</Button>
         </div>
     );

@@ -1,0 +1,7 @@
+@import '../../styles/main.scss';
+
+.CardPanels {
+    @extend %tabContent;
+    flex-wrap: wrap;
+    position: relative;
+}
