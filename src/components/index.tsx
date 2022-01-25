@@ -9,5 +9,6 @@ import Options from './Options/Options';
 import Results from './Results/Results';
 import Rules from './Rules/Rules';
 import TabWrapper from './TabWrapper/TabWrapper';
+import Timer from './Timer/Timer';
 
-export {Button, Card, CardPanel, CardPanels, Game, Main, MenuItem, Options, Results, Rules, TabWrapper};
+export {Button, Card, CardPanel, CardPanels, Game, Main, MenuItem, Options, Results, Rules, TabWrapper, Timer};

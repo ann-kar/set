@@ -1,0 +1,22 @@
+@import '../../styles/main.scss';
+
+.Timer {
+    position: absolute;
+    bottom: -($cardMargin * 7 + $menuItemHeight);
+    right: -$cardMargin;
+    height: $menuItemHeight;
+    width: $cardWidth;
+    border: none;
+    background: white;
+    border-radius: 4px;
+    background:rgba(0,0,0,0.3);
+    color: rgba(255,255,255,0.8);
+    line-height: $menuItemHeight;
+    font-family: 'Segoe UI';
+    font-size: 16px;
+    text-align: center;
+
+    &:hover {
+        background: rgba(255,255,255,0.3);
+    }
+}

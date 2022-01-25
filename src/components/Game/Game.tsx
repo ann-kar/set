@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 
 import './Game.scss';
-import {Button, Card, CardPanels } from '../../components';
+import {Button, Card, CardPanels, Timer } from '../../components';
 import { generateDeck, check, checkAll } from './utils';
 import { ICard, Status, ITabProps } from '../../ts/types';
 
@@ -148,6 +148,7 @@ function Game({ label }: ITabProps): JSX.Element {
         <div className="Game" data-id={label} >
             <CardPanels cards={visibleCards} renderCards={renderVisibleCards}/>
             <Button onClick={handleButton}>find set</Button>
+            <Timer/>
         </div>
     );
 }
