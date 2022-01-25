@@ -1,10 +1,11 @@
-import React, { FC } from 'react';
-import { isPropertySignature } from 'typescript';
-import './Options.scss';
+import React from 'react';
 
-function Options({handleTab, label} : any): JSX.Element {
+import './Options.scss';
+import {ITabProps} from '../../ts/types';
+
+function Options({ label }: ITabProps): JSX.Element {
     return (
-        <div className="Options" data-id={label} onClick={handleTab}>
+        <div className="Options" data-id={label}>
             Options
         </div>
     );

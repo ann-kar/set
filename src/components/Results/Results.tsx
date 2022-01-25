@@ -1,10 +1,11 @@
-import React, { FC } from 'react';
-import { isPropertySignature } from 'typescript';
-import './Results.scss';
+import React from 'react';
 
-function Results({handleTab, label} : any): JSX.Element {
+import './Results.scss';
+import { ITabProps } from '../../ts/types';
+
+function Results({ label }: ITabProps): JSX.Element {
     return (
-        <div className="Results" data-id={label} onClick={handleTab}>
+        <div className="Results" data-id={label}>
             Results
         </div>
     );

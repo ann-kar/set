@@ -16,4 +16,8 @@ interface ICard {
     handleCardClick?: any;
 }
 
-export type {Color, Shape, Fill, Number, Status, ICard};
+interface ITabProps {
+    label: string;
+}
+
+export type {Color, Shape, Fill, Number, Status, ICard, ITabProps};

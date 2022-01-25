@@ -1,10 +1,11 @@
-import React, { FC } from 'react';
-import { isPropertySignature } from 'typescript';
-import './Rules.scss';
+import React from 'react';
 
-function Rules({handleTab, label} : any): JSX.Element {
+import './Rules.scss';
+import { ITabProps } from '../../ts/types';
+
+function Rules({label} : ITabProps): JSX.Element {
     return (
-        <div className="Rules" data-id={label} onClick={handleTab}>
+        <div className="Rules" data-id={label}>
             Rules
         </div>
     );

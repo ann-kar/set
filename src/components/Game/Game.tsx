@@ -3,11 +3,7 @@ import React, { useState, useEffect } from 'react';
 import './Game.scss';
 import Card from '../Card/Card';
 import { generateDeck, check } from './utils';
-import { ICard, Status } from '../../ts/types';
-
-interface ITabProps {
-    label: string;
-}
+import { ICard, Status, ITabProps } from '../../ts/types';
 
 function Game({ label }: ITabProps): JSX.Element {
 
