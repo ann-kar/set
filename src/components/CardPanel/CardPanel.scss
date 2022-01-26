@@ -1,22 +1,41 @@
 @import '../../styles/main.scss';
 
 .CardPanel {
-   // background: rgba(255,255,255,0.2);
     position: absolute;
     height: 100%;
     width: 25%;
     display: flex;
     flex-wrap: wrap;
 
+    @include mobile {
+       width: 100vw;
+       height: calc(#{$cardH} + #{$cardMg} * 2);
+       justify-content: center;
+    }
+    
     &:nth-child(1n) {
         top: 0;
         left: calc(-25% - #{$cardMargin} * 2);
+
+        @include mobile {
+            top: unset;
+            left: 0;
+            right: unset;
+            bottom: calc((#{$cardH}) * -1 - #{$cardMg} * 2);
+         }
     }
     
     &:nth-child(2n) {
         top: 0;
         left: unset;
         right: calc(-25% - #{$cardMargin} * 2);
+    
+        @include mobile {
+            top: unset;
+            left: 0;
+            right: unset; 
+            bottom: calc((#{$cardH}) * -2 - #{$cardMg} * 4);
+         }
     }
     
     &:nth-child(3n) {
@@ -26,5 +45,14 @@
         bottom: calc(-33% - #{$cardMargin} * 2);
         height: 33%;
         width: 75%;
+    
+        @include mobile {
+            width: 100vw;
+            height: calc(#{$cardH} + #{$cardMg} * 2);
+            top: unset;
+            left: 0;
+            right: unset;
+            bottom: calc((#{$cardH}) * -3 - #{$cardMg} * 6);
+         }
     }
 }

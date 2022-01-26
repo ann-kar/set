@@ -3,11 +3,18 @@
 .TabWrapper {
     display: flex;
     flex-wrap: wrap;
+    align-items: flex-start;
     background: indigo;
-    height: $cardHeight * 3 + $cardMargin * 6;
-    width: $cardWidth * 4 + $cardMargin * 8;
+    height: calc(#{$cardHeight} * 3 + #{$cardMargin} * 6);
+    width: calc(#{$cardWidth} * 4 + #{$cardMargin} * 8);
     box-sizing: content-box;
     padding: $cardMargin;
     background: rgba(255,255,255,0.3);
+
+    @include mobile {
+        width: 100vw;
+        padding: 0;
+        height: calc(6 * #{$cardH} + 12 * #{$cardMg});
+        background: none;
+    }
 }
-  

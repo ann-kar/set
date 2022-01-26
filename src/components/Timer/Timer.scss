@@ -19,4 +19,12 @@
     &:hover {
         background: rgba(255,255,255,0.3);
     }
+
+    @include mobile {
+      width: 25vw;
+      bottom: unset;
+      top: -52px;
+      right: unset;
+      left: 7vw;
+  }
 }
