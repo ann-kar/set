@@ -22,4 +22,4 @@ function Card({ color, fill, number, shape, handleCardClick, id, cardStatus }: I
     );
   }
 
-  export default Card;
+export default Card;

@@ -1,15 +1,20 @@
-@import '../../App.scss';
+@import "../../App.scss";
 
 .TabWrapper {
     display: flex;
     flex-wrap: wrap;
+    position: relative;
+    justify-content: center;
     align-items: flex-start;
-    background: indigo;
-    height: calc(#{$cardHeight} * 3 + #{$cardMargin} * 6);
-    width: calc(#{$cardWidth} * 4 + #{$cardMargin} * 8);
-    box-sizing: content-box;
-    padding: $cardMargin;
-    background: rgba(255,255,255,0.3);
+    background: rgba(255, 255, 255, 0.3);
+    padding: 1.4%;
+    width: 100%; 
+    aspect-ratio: 700 / 380;
+    @media screen and (min-width: 600px) and (max-width: 1240px) {
+        // TODO: display 3 x 4 (tablet)
+        // height: calc((#{$cardHeight} + #{$cardMargin} * 2) * 3);
+        // width: calc((#{$cardWidth} + #{$cardMargin} * 2) * 4);
+    }
 
     @include mobile {
         width: 100vw;

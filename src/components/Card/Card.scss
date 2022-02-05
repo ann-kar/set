@@ -1,10 +1,10 @@
-@import '../../App.scss';
+@import "../../App.scss";
 
 .Card {
-    width: 150px;
-    height: 100px;
     border-radius: 10px;
-    margin: 10px;
+    width: 21.4%;
+    margin: 1.4%;
+    aspect-ratio: 3 / 2;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -17,11 +17,16 @@
         height: #{$cardH};
         margin: #{$cardMg};
     }
+
+    @media screen and (min-width: 600px) and (max-width: 1240px) {
+        // TODO: display 3 x 4 (tablet)
+        // width: $cardWidth;
+        // height: $cardHeight;
+        // margin: $cardMargin;
+    }
 }
 
-
 .Card-active {
-    
     background: rgba(246, 250, 195, 0.979);
     border: 1px solid rgba(246, 250, 195, 1);
 
@@ -36,20 +41,14 @@
         height: 100%;
         border-radius: 10px;
     }
-   
 }
 
-
-
 .Card-inactive {
-   background: white;
-   background-blend-mode: normal;
+    background: white;
+    background-blend-mode: normal;
 }
 
 .Card-accepted {
-   // background: green;
-   // background-blend-mode: darken;
-
     background: rgba(173, 255, 162, 0.179);
     border: 1px solid rgba(82, 150, 73, 0.979);
 
@@ -64,7 +63,6 @@
         border-radius: 10px;
         background: rgba(173, 255, 162, 0.179);
     }
-    
 }
 
 .Card-rejected {

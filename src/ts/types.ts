@@ -5,6 +5,15 @@ type Fill = 'blank' | 'filled' | 'shaded';
 type Number = 1 | 2 | 3;
 type Status = 'Card-active' | 'Card-inactive' | 'Card-accepted' | 'Card-rejected';
 
+type FeatureNames = 'color' | 'shape' | 'fill' | 'number';
+
+type Features = {
+    color: Array<Color>,
+    shape: Array<Shape>,
+    fill: Array<Fill>,
+    number: Array<Number>
+}
+
 interface ICard {
     color: Color;
     shape: Shape;
@@ -20,4 +29,4 @@ interface ITabProps {
     label: string;
 }
 
-export type {Color, Shape, Fill, Number, Status, ICard, ITabProps};
+export type {Color, Shape, Features, FeatureNames, Fill, Number, Status, ICard, ITabProps};
