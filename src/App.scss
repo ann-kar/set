@@ -6,5 +6,21 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  background: linear-gradient(#7ad16d, #5d397c);
+  background: linear-gradient(map-get($colors, green300), map-get($colors, violet300));
+}
+
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: none;
+}
+
+::-webkit-scrollbar-thumb {
+  background: map-get($colors, grey300);
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: map-get($colors, violet300);
 }

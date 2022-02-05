@@ -2,11 +2,8 @@
 $cardHeight: 100px;
 $cardWidth: 150px;
 $cardMargin: 10px;
-
-
 $menuItemWidth: 120px;
 $menuItemHeight: 35px;
-
 $mobile-width: 470px;
 
 // mobile:
@@ -20,3 +17,10 @@ $cardMg: 3px;
         @content;
     }
   }
+
+  $colors: (
+      violet300: #5d397c, 
+      green300: #7ad16d,
+      grey300: rgba(0,0,0,0.3)
+      );
+     
