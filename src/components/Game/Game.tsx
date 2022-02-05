@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from 'react';
 
 import './Game.scss';
-import {Button, Card, CardPanels, Timer } from '../../components';
-import { generateDeck, check, checkAll } from './utils';
+import { Button, Card, CardPanels, Timer } from '../../components';
+import { generateDeck, check, checkAll } from '../../utils/utils';
 import { ICard, Status, ITabProps } from '../../ts/types';
 
 function Game({ label }: ITabProps): JSX.Element {

@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 
 import './Rules.scss';
 import { ICard, ITabProps, Status, Features, FeatureNames } from '../../ts/types';
-import { generateDeck, renderCards } from '../Game/utils';
+import { generateDeck, renderCards } from '../../utils/utils';
 import { Card, TabWrapper } from '..';
 
 function Rules({ label }: ITabProps): JSX.Element {
