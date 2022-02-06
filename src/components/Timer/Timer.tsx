@@ -37,7 +37,7 @@ function Timer() {
 
     return (
         <div className="Timer" onClick={() => setIsActive(!isActive)}>
-            <div className="time">
+            <div className="Timer__text">
                 <span className="minute">{minute}</span>
                 <span>:</span>
                 <span className="second">{second}</span>

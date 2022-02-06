@@ -4,12 +4,13 @@ import './Game.scss';
 import { Button, Card, CardPanels, Timer } from '../../components';
 import { generateDeck, check, checkAll } from '../../utils/utils';
 import { ICard, Status, ITabProps } from '../../ts/types';
+import ButtonsWrapper from '../ButtonsWrapper/ButtonsWrapper';
 
 function Game({ label }: ITabProps): JSX.Element {
 
-    const [deck, setDeck] = React.useState<Array<ICard>>([]);
-    const [activeCards, setActiveCards] = React.useState<Array<string>>([]);
-    const [visibleCards, setVisibleCards] = React.useState<Array<ICard>>([]);
+    const [deck, setDeck] = useState<Array<ICard>>([]);
+    const [activeCards, setActiveCards] = useState<Array<string>>([]);
+    const [visibleCards, setVisibleCards] = useState<Array<ICard>>([]);
 
     useEffect(() => {
         let newDeck = generateDeck();
@@ -146,9 +147,11 @@ function Game({ label }: ITabProps): JSX.Element {
 
     return (
         <div className="Game" data-id={label} >
-            <CardPanels cards={visibleCards} renderCards={renderVisibleCards}/>
-            <Button onClick={handleButton}>find set</Button>
-            <Timer/>
+            <CardPanels cards={visibleCards} renderCards={renderVisibleCards} />
+            <ButtonsWrapper>
+                <Button onClick={handleButton}>find set</Button>
+                <Timer />
+            </ButtonsWrapper>
         </div>
     );
 }

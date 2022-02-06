@@ -1,0 +1,20 @@
+@import "../../styles/main";
+
+.ButtonsWrapper {
+    position: absolute;
+    width: $cardWidth;
+    height: calc(#{$menuItemHeight} * 3);
+    bottom: calc(#{$menuItemHeight} * -3 - #{$cardMargin} * 3);
+    right: - $cardMargin;
+}
+
+@include mobile {
+    position: fixed;
+    background: blue;
+    width: 100vw;
+    height: calc(#{$menuItemHeight});
+    bottom: unset;
+    right: unset;
+    top: 0;
+    left: 0;
+}

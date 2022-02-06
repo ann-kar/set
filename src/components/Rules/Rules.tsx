@@ -3,7 +3,7 @@ import React, { useState, useEffect } from 'react';
 import './Rules.scss';
 import { ICard, ITabProps, Status, Features, FeatureNames } from '../../ts/types';
 import { generateDeck, renderCards } from '../../utils/utils';
-import { Card, TabWrapper } from '..';
+import { Button, Card, TabWrapper } from '..';
 
 function Rules({ label }: ITabProps): JSX.Element {
     const [cards, setCards] = useState<ICard[]>([]);
@@ -25,7 +25,7 @@ function Rules({ label }: ITabProps): JSX.Element {
         number: number
     };
 
-    const toggleFeature = (e: React.MouseEvent<HTMLLIElement, MouseEvent>) => {
+    const toggleFeature = (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
 
         let features: Features = {
             color: ['green', 'red', 'violet'],
@@ -93,27 +93,47 @@ function Rules({ label }: ITabProps): JSX.Element {
             <TabWrapper>
                 {renderCards(cards)}
             </TabWrapper>
-            <h2 className="Rules__subheader">Why are those cards a set?</h2>
-                <p className="Rules__text">Well, each card has four features (click on features to see variants).</p>
-                <ul className="Rules__list">
-                    <li onClick={(e) => toggleFeature(e)} data-count={1} data-feature="color">color</li>
-                    <li onClick={(e) => toggleFeature(e)} data-count={1} data-feature="shape">shape</li>
-                    <li onClick={(e) => toggleFeature(e)} data-count={1} data-feature="fill">fill</li>
-                    <li onClick={(e) => toggleFeature(e)} data-count={1} data-feature="number">number of symbols</li>
-                </ul>
-                <Card
-                    color={sampleCard.color}
-                    shape={sampleCard.shape}
-                    fill={sampleCard.fill}
-                    number={sampleCard.number}
-                    id="green-squiggle-filled-1"
-                    cardStatus="Card-inactive"
-                    children={undefined} />
-            <p className="Rules__text">
-                A SET consists of three cards in which every feature is either the same (e.g. all cards are green) or different (e.g.: a green card + a red card + a violet card).
-            </p>
+            <section className="Rules__section">
+                <h2 className="Rules__subheader">Why are those cards a set?</h2>
+                <p className="Rules__text">Well, each card has four features.<br/>
+               And each feature comes in three variants.<br/>
+                Click on the buttons below to explore all the 81 (3 x 3 x 3 x 3) possible cards.</p>
+                <div className="Rules__cardSection__card">
+                            <Card
+                                color={sampleCard.color}
+                                shape={sampleCard.shape}
+                                fill={sampleCard.fill}
+                                number={sampleCard.number}
+                                id="green-squiggle-filled-1"
+                                cardStatus="Card-inactive"
+                                children={undefined} />
+                        </div>
+                <div className="Rules__cardSection">
+                   
+                  
+                       
+                        <div>
+                            <Button onClick={(e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => toggleFeature(e)} data-count={1} data-feature="color">color</Button>
+                            <Button onClick={(e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => toggleFeature(e)} data-count={1} data-feature="shape">shape</Button>
+                            <Button onClick={(e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => toggleFeature(e)} data-count={1} data-feature="fill">fill</Button>
+                            <Button onClick={(e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => toggleFeature(e)} data-count={1} data-feature="number">number of symbols</Button>
+
+                        </div>
+                        <div>
+                     
+                        </div>
+                        
+                    
+                </div>
+
+              
+                <p className="Rules__text">
+                    A SET consists of three cards in which every feature is either the same (e.g. all cards are green) or different (e.g.: a green card + a red card + a violet card).
+                </p>
+            </section>
+
             <div className="sampleCards">
-            <h2 className="Rules__subheader">Example:</h2>
+                <h2 className="Rules__subheader">Example:</h2>
                 <Card
                     color="green"
                     shape="squiggle"
@@ -138,21 +158,21 @@ function Rules({ label }: ITabProps): JSX.Element {
                     id="violet-squiggle-filled-1"
                     cardStatus="Card-inactive"
                     children={undefined} />
-                 
-                        <ol className="Rules__list">
-                            <li>colors: all different</li>
-                            <li>shapes: all the same</li>
-                            <li>fills: all the same</li>
-                            <li>numbers: all different</li>
-                        </ol>
-                  
+
+                <ol className="Rules__list">
+                    <li>colors: all different</li>
+                    <li>shapes: all the same</li>
+                    <li>fills: all the same</li>
+                    <li>numbers: all different</li>
+                </ol>
+
             </div>
             <p className="Rules__text">Hint: If two cards share a feature and the third one doesn’t, it’s not a set.</p>
             <h2 className="Rules__subheader">Ok, but what's the point of the game?</h2>
-            <p className="Rules__text"> Depends. If you play against the computer, the player with more SETs wins. 
-                If you play in the solo mode (to train yourself in spotting SETS faster), 
+            <p className="Rules__text"> Depends. If you play against the computer, the player with more SETs wins.</p>
+            <p className="Rules__text"> If you play in the solo mode (the only mode currently available here... but <em>just you wait!</em>),
                 try to finish the game as fast as you can.</p>
-        </div>
+        </div >
     );
 }
 

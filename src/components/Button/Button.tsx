@@ -9,10 +9,11 @@ type ButtonProps = {
   label?: string;
 }
 
-function Button ({dataId, label, onClick, children} : ButtonProps) : JSX.Element {
+function Button ({label, children, ...props} : ButtonProps) : JSX.Element {
   return (
-    <button className="Button" onClick={onClick} data-id={dataId}>
-       Hint
+    <button className="Button" {...props}>
+       {label}
+       {children}
     </button>
   );
 }

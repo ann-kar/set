@@ -1,29 +1,9 @@
 @import '../../styles/main.scss';
 
 .Button {
-    height: $menuItemHeight;
-    width: $cardWidth;
-    border: none;
-    background: white;
-    border-radius: 4px;
-    position: absolute;
-    bottom: -($cardMargin * 6);
-    right: -$cardMargin;
-    background:rgba(0,0,0,0.3);
-    color: rgba(255,255,255,0.8);
-    line-height: $menuItemHeight;
-    font-family: 'Segoe UI';
-    font-size: 16px;
+@extend %button;    
 
     &:hover {
-        background: rgba(255,255,255,0.3);
-    }
-
-    @include mobile {
-        width: 25vw;
-        bottom: unset;
-        top: -52px;
-        right: unset;
-        left: calc(50vw - 12.5vw);
+        @extend %button-hover; 
     }
 }

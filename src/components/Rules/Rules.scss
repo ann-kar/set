@@ -11,6 +11,37 @@
     overflow-x: hidden;
     text-align: center;
 
+    &__cardSection {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        &__card {
+            display: flex;
+            justify-content: center;    
+        }
+
+
+        .Button {
+            margin: 10px 5px;
+            display: inline-block;
+        }
+   
+        .Card {
+            height: 100px;
+            width: 150px;
+            margin: 30px;
+        }
+    }
+
+    &__buttons {
+        position: absolute;
+        width: $cardWidth;
+        height: calc(#{$menuItemHeight} * 2);
+        bottom: calc(#{$menuItemHeight} * -3 - #{$cardMargin} * 3);
+        right: -$cardMargin;
+    }
+
     &__header {
         font-size: 24px;
         line-height: 30px;

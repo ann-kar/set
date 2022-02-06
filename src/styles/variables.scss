@@ -1,10 +1,9 @@
-
 $cardHeight: 100px;
 $cardWidth: 150px;
 $cardMargin: 10px;
 $menuItemWidth: 120px;
 $menuItemHeight: 35px;
-$mobile-width: 470px;
+$borderRadius: 4px;
 
 // mobile:
 
@@ -12,15 +11,33 @@ $cardW: 30vw;
 $cardH: calc(30vw * 0.67);
 $cardMg: 3px;
 
+// breakpoints:
+
+$mobile-width: 470px;
+
 @mixin mobile {
-    @media (max-width: #{$mobile-width}) { 
+    @media screen and (max-width: #{$mobile-width}) {
         @content;
     }
-  }
+}
 
-  $colors: (
-      violet300: #5d397c, 
-      green300: #7ad16d,
-      grey300: rgba(0,0,0,0.3)
-      );
-     
+$fontSizes: (
+    header: 2rem,
+    subheader: 1.5rem,
+    button: 1.2rem,
+    body: 1rem
+);
+
+$colors: (
+    violet300: #5d397c,
+    green300: #7ad16d,
+    primary: #5d397c,
+    secondary: #7ad16d,
+    light300: rgba(255, 255, 255, 0.3),
+    light800: rgba(255, 255, 255, 0.8),
+    dark300: rgba(0, 0, 0, 0.3),
+    lightgrey: rgba(255, 255, 255, 0.8),
+    grey300: rgba(0, 0, 0, 0.3),
+    white: #fff,
+    black: #000,
+);
