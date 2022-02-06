@@ -89,44 +89,30 @@ function Rules({ label }: ITabProps): JSX.Element {
                 SET is an exercise in perceptiveness. <br /><br />
                 What you need to do is find a SET of three cards out of the twelve cards you see:
             </p>
-
             <TabWrapper>
                 {renderCards(cards)}
             </TabWrapper>
             <section className="Rules__section">
                 <h2 className="Rules__subheader">Why are those cards a set?</h2>
-                <p className="Rules__text">Well, each card has four features.<br/>
-               And each feature comes in three variants.<br/>
-                Click on the buttons below to explore all the 81 (3 x 3 x 3 x 3) possible cards.</p>
-                <div className="Rules__cardSection__card">
-                            <Card
-                                color={sampleCard.color}
-                                shape={sampleCard.shape}
-                                fill={sampleCard.fill}
-                                number={sampleCard.number}
-                                id="green-squiggle-filled-1"
-                                cardStatus="Card-inactive"
-                                children={undefined} />
-                        </div>
+                <p className="Rules__text">Well, each card has four features.<br />
+                    And each feature comes in three variants.<br />
+                    Click on the buttons below to explore all the 81 (3 x 3 x 3 x 3) possible cards.</p>
+                <Card
+                    color={sampleCard.color}
+                    shape={sampleCard.shape}
+                    fill={sampleCard.fill}
+                    number={sampleCard.number}
+                    id="green-squiggle-filled-1"
+                    cardStatus="Card-inactive"
+                    children={undefined} />
                 <div className="Rules__cardSection">
-                   
-                  
-                       
-                        <div>
-                            <Button onClick={(e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => toggleFeature(e)} data-count={1} data-feature="color">color</Button>
-                            <Button onClick={(e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => toggleFeature(e)} data-count={1} data-feature="shape">shape</Button>
-                            <Button onClick={(e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => toggleFeature(e)} data-count={1} data-feature="fill">fill</Button>
-                            <Button onClick={(e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => toggleFeature(e)} data-count={1} data-feature="number">number of symbols</Button>
-
-                        </div>
-                        <div>
-                     
-                        </div>
-                        
-                    
+                    <div>
+                        <Button onClick={(e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => toggleFeature(e)} data-count={1} data-feature="color">color</Button>
+                        <Button onClick={(e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => toggleFeature(e)} data-count={1} data-feature="shape">shape</Button>
+                        <Button onClick={(e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => toggleFeature(e)} data-count={1} data-feature="fill">fill</Button>
+                        <Button onClick={(e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => toggleFeature(e)} data-count={1} data-feature="number">number of symbols</Button>
+                    </div>
                 </div>
-
-              
                 <p className="Rules__text">
                     A SET consists of three cards in which every feature is either the same (e.g. all cards are green) or different (e.g.: a green card + a red card + a violet card).
                 </p>
@@ -158,14 +144,12 @@ function Rules({ label }: ITabProps): JSX.Element {
                     id="violet-squiggle-filled-1"
                     cardStatus="Card-inactive"
                     children={undefined} />
-
                 <ol className="Rules__list">
                     <li>colors: all different</li>
                     <li>shapes: all the same</li>
                     <li>fills: all the same</li>
                     <li>numbers: all different</li>
                 </ol>
-
             </div>
             <p className="Rules__text">Hint: If two cards share a feature and the third one doesn’t, it’s not a set.</p>
             <h2 className="Rules__subheader">Ok, but what's the point of the game?</h2>

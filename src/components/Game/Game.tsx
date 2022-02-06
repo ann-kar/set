@@ -45,14 +45,15 @@ function Game({ label }: ITabProps): JSX.Element {
     }, [activeCards])
 
     const handleButton = () => {
-        let set = checkAll(visibleCards);
-        if (set && deck.length > 0) {
-            setActiveCards(set);
-        } else if (deck.length > 0) {
-            addCards();
-        } else {
-            end();
-        }
+        addCards()
+        // let set = checkAll(visibleCards);
+        // if (set && deck.length > 0) {
+        //     setActiveCards(set);
+        // } else if (deck.length > 0) {
+        //     addCards();
+        // } else {
+        //     end();
+        // }
     }
 
     const end = () => {

@@ -1,9 +1,15 @@
-$cardHeight: 100px;
-$cardWidth: 150px;
-$cardMargin: 10px;
+// $cardHeight: 100px;
+// $cardWidth: 150px;
+// $cardMargin: 10px;
+
+$cardWidth: 12vw;
+$cardHeight: calc(12vw * 0.67);
+$cardMargin: 0.8vw;
+
 $menuItemWidth: 120px;
 $menuItemHeight: 35px;
 $borderRadius: 4px;
+$borderRadiusLarge: 10px;
 
 // mobile:
 
@@ -13,10 +19,17 @@ $cardMg: 3px;
 
 // breakpoints:
 
-$mobile-width: 470px;
+$mobile: 470px;
+$laptop: 1240px;
 
 @mixin mobile {
-    @media screen and (max-width: #{$mobile-width}) {
+    @media screen and (max-width: #{$mobile}) {
+        @content;
+    }
+}
+
+@mixin tablet {
+    @media screen and(min-width: #{$mobile}) and (max-width: #{$laptop}) {
         @content;
     }
 }
@@ -33,6 +46,9 @@ $colors: (
     green300: #7ad16d,
     primary: #5d397c,
     secondary: #7ad16d,
+    active: #f6fac3,
+    accepted: #b8e6b1,
+    rejected: #ffa3a6,
     light300: rgba(255, 255, 255, 0.3),
     light800: rgba(255, 255, 255, 0.8),
     dark300: rgba(0, 0, 0, 0.3),

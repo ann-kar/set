@@ -3,35 +3,29 @@
 .Rules {
     @extend %tabContent;
     flex-wrap: wrap;
-    padding: $cardMargin;
-    padding: 1.4%;
     justify-content: center;
     align-items: flex-start;
+    padding: $cardMargin;
     overflow-y: scroll;
     overflow-x: hidden;
     text-align: center;
+
+    &__section {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+    }
 
     &__cardSection {
         display: flex;
         justify-content: center;
         align-items: center;
 
-        &__card {
-            display: flex;
-            justify-content: center;    
-        }
-
-
         .Button {
-            margin: 10px 5px;
+            margin: $cardMargin;
             display: inline-block;
         }
-   
-        .Card {
-            height: 100px;
-            width: 150px;
-            margin: 30px;
-        }
+
     }
 
     &__buttons {
@@ -67,7 +61,13 @@
     }
 
     .TabWrapper {
-        width: 70%;
+        width: 75%;
+        padding: calc(#{$cardMargin} * 0.7);
+
+        .Card {
+            width: calc(#{$cardWidth} * 0.7);
+            margin: calc(#{$cardMargin} * 0.7);
+        }
     }
 
     .sampleCards {
