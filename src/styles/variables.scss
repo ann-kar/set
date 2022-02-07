@@ -1,7 +1,3 @@
-// $cardHeight: 100px;
-// $cardWidth: 150px;
-// $cardMargin: 10px;
-
 $cardWidth: 12vw;
 $cardHeight: calc(12vw * 0.67);
 $cardMargin: 0.8vw;
@@ -30,12 +26,6 @@ $laptop: 1240px;
     }
 }
 
-@mixin tablet {
- //   @media screen and(min-width: #{$mobile}) and (max-width: #{$laptop}) {
-        @content;
-  //  }
-}
-
 $fontSizes: (
     header: 2rem,
     subheader: 1.5rem,
@@ -44,8 +34,6 @@ $fontSizes: (
 );
 
 $colors: (
-    violet300: #5d397c,
-    green300: #7ad16d,
     primary: #5d397c,
     secondary: #7ad16d,
     active: #f6fac3,
@@ -54,8 +42,6 @@ $colors: (
     light300: rgba(255, 255, 255, 0.3),
     light800: rgba(255, 255, 255, 0.8),
     dark300: rgba(0, 0, 0, 0.3),
-    lightgrey: rgba(255, 255, 255, 0.8),
-    grey300: rgba(0, 0, 0, 0.3),
     white: #fff,
     black: #000,
 );

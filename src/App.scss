@@ -7,7 +7,8 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  background: linear-gradient(map-get($colors, green300), map-get($colors, violet300));
+  padding-bottom: calc(#{$cardHeight} * 0.67);
+  background: linear-gradient(map-get($colors, secondary), map-get($colors, primary));
 
   @include mobile {
     align-items: flex-start;
@@ -23,9 +24,9 @@
 }
 
 ::-webkit-scrollbar-thumb {
-  background: map-get($colors, grey300);
+  background: map-get($colors, dark300);
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: map-get($colors, violet300);
+  background: map-get($colors, primary);
 }
