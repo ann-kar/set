@@ -7,14 +7,6 @@
       @extend %button-hover;    
     }
 
-    @include mobile {
-      width: 25vw;
-      bottom: unset;
-      top: -52px;
-      right: unset;
-      left: 7vw;
-  }
-
   &__text {
     width: 100%;
     height: 100%;

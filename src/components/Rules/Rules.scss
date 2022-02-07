@@ -10,6 +10,10 @@
     overflow-x: hidden;
     text-align: center;
 
+    @include mobile {
+       padding: $cardMargin 0;
+    }
+
     &__section {
             display: flex;
             flex-wrap: wrap;
@@ -67,6 +71,18 @@
         .Card {
             width: calc(#{$cardWidth} * 0.7);
             margin: calc(#{$cardMargin} * 0.7);
+        }
+
+        @include mobile {
+            height: unset;
+            width: 85%;
+            padding: calc(#{$cardMargin} * 0.8);
+            aspect-ratio: 700 / 380;
+
+            .Card {
+                width: calc(#{$cardWidth} * 0.8);
+                margin: calc(#{$cardMargin} * 0.8);
+            }
         }
     }
 

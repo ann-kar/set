@@ -3,8 +3,8 @@
 .Card {
     border-radius: $borderRadiusLarge;
     width: 12vw;
-    margin: 0.8vw;
-    aspect-ratio: 3 / 2;
+    margin: 0.8vw; 
+      aspect-ratio: 3 / 2;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -13,9 +13,11 @@
     position: relative;
 
     @include mobile {
-        width: #{$cardW};
-        height: #{$cardH};
-        margin: #{$cardMg};
+        width: $cardW;
+        max-width: $maxCardW;
+        height: calc(#{$cardW} * 0.67);
+        max-height: calc(#{$maxCardW} * 0.67);
+        margin: $cardMg;
     }
 
     @include tablet {

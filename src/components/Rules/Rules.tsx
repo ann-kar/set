@@ -110,7 +110,7 @@ function Rules({ label }: ITabProps): JSX.Element {
                         <Button onClick={(e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => toggleFeature(e)} data-count={1} data-feature="color">color</Button>
                         <Button onClick={(e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => toggleFeature(e)} data-count={1} data-feature="shape">shape</Button>
                         <Button onClick={(e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => toggleFeature(e)} data-count={1} data-feature="fill">fill</Button>
-                        <Button onClick={(e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => toggleFeature(e)} data-count={1} data-feature="number">number of symbols</Button>
+                        <Button onClick={(e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => toggleFeature(e)} data-count={1} data-feature="number">number</Button>
                     </div>
                 </div>
                 <p className="Rules__text">

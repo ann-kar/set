@@ -5,17 +5,29 @@ import { MenuItem, TabWrapper } from '../../components';
 
 function Main({ children }: any): JSX.Element {
 
-  const tabs = ['New Game', 'Results', 'Rules', 'Options'];
+  const tabs = ['New Game', 'Rules', 'Options'];
 
   const [activeTab, setActiveTab] = useState(tabs[0]);
+  const [menuHidden, setMenuHidden] = useState(true);
+
+  const toggleMenu = () => {
+    console.log('toggled')
+    if (menuHidden) {
+      setMenuHidden(false);
+    } else {
+      setMenuHidden(true);
+    }
+  }
 
   return (
     <div className="Main">
       <ol className="menu">
+      <MenuItem hidden={false} label="Menu" onClick={toggleMenu}/>
         {tabs.map(tab => (
           <MenuItem
             label={tab}
             key={tab}
+            hidden={menuHidden}
             activeTab={activeTab === tab}
             onClick={() => setActiveTab(tab)}
           >

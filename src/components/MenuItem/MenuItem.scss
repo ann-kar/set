@@ -11,18 +11,35 @@
     margin: 0 $cardMargin 0 0;
     border-radius: 4px 4px 0 0;
 
-    @media screen and (max-width: 470px) {
-        position: absolute;
-        top: 0;
-        right: 0;
-        display: none;
+    &:nth-child(1) {
+       display: none;
     }
 
     @include mobile {
+
+        &:nth-child(1) {
+            display: block;
+         }
+     
+        &.hidden {
+            display: none;
+        }
+        width: $cardW;
+        max-width: $maxCardW;
         position: absolute;
-        top: 0;
-        right: 0;
-        display: none;
+        bottom: calc($menuItemHeight / 2);
+        right: $cardMargin;
+        z-index: 9;
+
+        &:nth-child(2n) {
+            bottom: 55px;
+        }
+        &:nth-child(3n) {
+            bottom: 90px;
+        }
+        &:nth-child(4n) {
+            bottom: 130px;
+        }
     }
 }
 

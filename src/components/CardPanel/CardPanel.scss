@@ -6,11 +6,12 @@
     width: 25%;
     display: flex;
     flex-wrap: wrap;
-
+     
     @include mobile {
-       width: 100vw;
-       height: calc(#{$cardH} + #{$cardMg} * 2);
+       width: 100%;
        justify-content: center;
+       height: calc(#{$cardW} * 0.67 + #{$cardMg} * 2);
+       max-height: calc(#{$maxCardW} * 0.67 + #{$cardMg} * 2);
     }
     
     &:nth-child(1n) {
@@ -21,8 +22,8 @@
             top: unset;
             left: 0;
             right: unset;
-            bottom: calc((#{$cardH}) * -1 - #{$cardMg} * 2);
-         }
+            bottom: calc((#{MIN($cardW, $maxCardW)} * 0.67 + #{$cardMg} * 2) * -1);
+        }
     }
     
     &:nth-child(2n) {
@@ -34,7 +35,7 @@
             top: unset;
             left: 0;
             right: unset; 
-            bottom: calc((#{$cardH}) * -2 - #{$cardMg} * 4);
+            bottom: calc((#{MIN($cardW, $maxCardW)} * 0.67 * 2 + #{$cardMg} * 4) * -1);
          }
     }
     
@@ -47,12 +48,12 @@
         width: 75%;
     
         @include mobile {
-            width: 100vw;
-            height: calc(#{$cardH} + #{$cardMg} * 2);
+            width: 100%;
+            height: calc(#{$cardW} * 0.67 + #{$cardMg} * 2);
             top: unset;
             left: 0;
             right: unset;
-            bottom: calc((#{$cardH}) * -3 - #{$cardMg} * 6);
+            bottom: calc((#{MIN($cardW, $maxCardW)} * 0.67 * 3 + #{$cardMg} * 6) * -1);
          }
     }
 }

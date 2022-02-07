@@ -18,6 +18,12 @@
   color: map-get($colors, light800);
   font-size: map-get($fontSizes, body);
   text-align: center;
+
+  @include mobile { 
+    min-width: $cardW;
+    max-width: $maxCardW;
+    margin: $cardMg;
+  }
 }
 
 %button-hover {

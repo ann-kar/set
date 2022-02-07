@@ -14,12 +14,14 @@ $borderRadiusLarge: 10px;
 // mobile:
 
 $cardW: 30vw;
+$maxCardW: 120px;
 $cardH: calc(30vw * 0.67);
 $cardMg: 3px;
+$menuHeight: calc(#{$menuItemHeight} * 2);
 
 // breakpoints:
 
-$mobile: 470px;
+$mobile: 700px;
 $laptop: 1240px;
 
 @mixin mobile {
@@ -29,9 +31,9 @@ $laptop: 1240px;
 }
 
 @mixin tablet {
-    @media screen and(min-width: #{$mobile}) and (max-width: #{$laptop}) {
+ //   @media screen and(min-width: #{$mobile}) and (max-width: #{$laptop}) {
         @content;
-    }
+  //  }
 }
 
 $fontSizes: (

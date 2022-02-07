@@ -8,7 +8,6 @@ function App() {
         <Game label="New Game" />
         <Options label="Options" />
         <Rules label="Rules" />
-        <Results label="Results" />
       </Main>
     </div>
   );

@@ -4,9 +4,10 @@
     @extend %tabContent;
     flex-wrap: wrap;
     position: relative;
-
+    
     @include mobile {
         align-items: flex-start;
-        height: calc(4 * #{$cardH} + 8 * #{$cardMg});
-    }
+        height: calc(4 * #{$cardW} * 0.67 + 8 * #{$cardMg});
+        max-height: calc(4 * #{$maxCardW} * 0.67 + 8 * #{$cardMg});
+        }
 }
