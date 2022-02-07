@@ -45,19 +45,18 @@ function Game({ label }: ITabProps): JSX.Element {
     }, [activeCards])
 
     const handleButton = () => {
-        addCards()
-        // let set = checkAll(visibleCards);
-        // if (set && deck.length > 0) {
-        //     setActiveCards(set);
-        // } else if (deck.length > 0) {
-        //     addCards();
-        // } else {
-        //     end();
-        // }
+        let set = checkAll(visibleCards);
+        if (set && deck.length > 0) {
+            setActiveCards(set);
+        } else if (deck.length > 0) {
+            addCards();
+        } else {
+            end();
+        }
     }
 
     const end = () => {
-        alert("you have won")
+        alert("you've reached the end!") // TODO
     }
 
     const addCards = () => {
@@ -91,23 +90,19 @@ function Game({ label }: ITabProps): JSX.Element {
                 return;
             }
         })
-
         setVisibleCards(visibleCardsCopy);
     }
-
 
     const removeCards = (cards: Array<any>) => {
 
         const visibleCardsCopy = [...visibleCards];
         let cardIndex;
-
+        
         cards.forEach(cardId => {
             cardIndex = visibleCardsCopy.findIndex((card) => card.id === cardId);
             visibleCardsCopy.splice(cardIndex, 1);
         })
-
         setVisibleCards(visibleCardsCopy);
-
     }
 
     const handleCardClick = (e: React.MouseEvent<HTMLDivElement>) => {
