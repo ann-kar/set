@@ -1,27 +1,21 @@
 
-import { ICard, Features } from '../ts/types';
+import { ICard, Features, shapes, colors, fills, numbers } from '../ts/types';
 import { Card } from '../components';
 
 export function generateDeck() {
-    
-    let deck: Array<ICard> = [];
-    let features: Features = {
-        color: ['green', 'red', 'violet'],
-        shape: ['diamond', 'squiggle', 'stadium'],
-        fill: ['blank', 'filled', 'shaded'],
-        number: [1, 2, 3]
-    }
 
-    for (let i = 0; i < 3; i++) {
-        for (let j = 0; j < 3; j++) {
-            for (let k = 0; k < 3; k++) {
-                for (let l = 0; l < 3; l++) {
+    const deck: Array<ICard> = [];
+
+    for (const color of colors) {
+        for (const shape of shapes) {
+            for (const fill of fills) {
+                for (const number of numbers) {
                     deck.push({
-                        color: features.color[i],
-                        shape: features.shape[j],
-                        fill: features.fill[k],
-                        number: features.number[l],
-                        id: `${features.color[i]}-${features.shape[j]}-${features.fill[k]}-${features.number[l]}`,
+                        color,
+                        shape,
+                        fill,
+                        number,
+                        id: `${color}-${shape}-${fill}-${number}`,
                         cardStatus: 'Card-inactive',
                         children: undefined
                     })
