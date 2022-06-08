@@ -2,9 +2,9 @@ import React, { useState, useEffect } from "react";
 
 import "./Game.scss";
 import { Button, Card, CardPanels, Timer } from "../../components";
-import { generateDeck, check, checkAll } from "../../utils/utils";
 import { ICard, Status, ITabProps } from "../../ts/types";
 import ButtonsWrapper from "../ButtonsWrapper/ButtonsWrapper";
+import { Controller } from "../../controller/Controller";
 
 function Game({ label }: ITabProps): JSX.Element {
   const [deck, setDeck] = useState<Array<ICard>>([]);
@@ -12,14 +12,14 @@ function Game({ label }: ITabProps): JSX.Element {
   const [visibleCards, setVisibleCards] = useState<Array<ICard>>([]);
 
   useEffect(() => {
-    let newDeck = generateDeck();
+    let newDeck = Controller.createDeck();
     setDeck(newDeck.slice(12));
     setVisibleCards(newDeck.slice(0, 12));
   }, []);
 
   useEffect(() => {
     if (activeCards.length === 3) {
-      if (check(activeCards)) {
+      if (Controller.check(activeCards as [string,string,string])) {
         activeCards.forEach((cardId) => {
           updateCardStatus(cardId, "Card-accepted");
         });
@@ -44,7 +44,7 @@ function Game({ label }: ITabProps): JSX.Element {
   }, [activeCards]);
 
   const handleButton = () => {
-    let set = checkAll(visibleCards);
+    let set = Controller.checkAll(visibleCards.map(card => card.id));
     if (set && deck.length > 0) {
       setActiveCards(set);
     } else if (deck.length > 0) {
@@ -66,7 +66,6 @@ function Game({ label }: ITabProps): JSX.Element {
         visibleCardsCopy.push(el);
       }
     }
-
     setVisibleCards(visibleCardsCopy);
     setDeck(deck.slice(3));
   };
