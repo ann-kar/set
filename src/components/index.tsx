@@ -2,7 +2,7 @@ import Button from './Button/Button';
 import Card from './Card/Card';
 import CardPanel from './CardPanel/CardPanel';
 import CardPanels from './CardPanels/CardPanels';
-import Game from './Game/Game';
+import {Game} from './Game/Game';
 import Main from './Main/Main';
 import MenuItem from './MenuItem/MenuItem';
 import Options from './Options/Options';
