@@ -8,15 +8,14 @@ function Card({ handleCardClick, id, cardStatus }: ICard): JSX.Element {
 
   return (
     <div className={`Card ${cardStatus}`} onClick={() => handleCardClick(id)}>
-      {Array(parseInt(features.number))
-        .fill("0")
-        .map(() => (
-          <Symbol
-            color={features.color}
-            fill={features.fill}
-            shape={features.shape}
-          />
-        ))}
+      {Array.from(Array(parseInt(features.number))).map((number, i) => (
+        <Symbol
+          key={i}
+          color={features.color}
+          fill={features.fill}
+          shape={features.shape}
+        />
+      ))}
     </div>
   );
 }
