@@ -1,20 +1,24 @@
+export const colors = ['green', 'red', 'violet'] as const;
+export const shapes = ['diamond', 'squiggle', 'stadium'] as const;
+export const fills = ['blank', 'filled', 'shaded'] as const;
+export const numbers = [1, 2, 3] as const;
 
-type Color = 'green' | 'red' | 'violet';
-type Shape = 'diamond' | 'squiggle' | 'stadium';
-type Fill = 'blank' | 'filled' | 'shaded';
-type Number = 1 | 2 | 3;
-type Status = 'Card-active' | 'Card-inactive' | 'Card-accepted' | 'Card-rejected';
+export type Color = typeof colors[number];
+export type Shape = typeof shapes[number];
+export type Fill = typeof fills[number];
+export type Number = typeof numbers[number];
+export type Status = 'Card-active' | 'Card-inactive' | 'Card-accepted' | 'Card-rejected';
 
-type FeatureNames = 'color' | 'shape' | 'fill' | 'number';
+export type FeatureNames = 'color' | 'shape' | 'fill' | 'number';
 
-type Features = {
+export type Features = {
     color: Array<Color>,
     shape: Array<Shape>,
     fill: Array<Fill>,
     number: Array<Number>
 }
 
-interface ICard {
+export interface ICard {
     color: Color;
     shape: Shape;
     fill: Fill;
@@ -25,8 +29,6 @@ interface ICard {
     handleCardClick?: any;
 }
 
-interface ITabProps {
+export interface ITabProps {
     label: string;
 }
-
-export type {Color, Shape, Features, FeatureNames, Fill, Number, Status, ICard, ITabProps};
