@@ -19,14 +19,14 @@ export type Features = {
 }
 
 export interface ICard {
-    color: Color;
-    shape: Shape;
-    fill: Fill;
-    number: Number;
+    // color: Color;
+    // shape: Shape;
+    // fill: Fill;
+    // number: Number;
     id: string;
     cardStatus: Status;
-    children: any;
-    handleCardClick?: any;
+    // children: any;
+     handleCardClick?: any;
 }
 
 export interface ITabProps {
