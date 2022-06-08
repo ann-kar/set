@@ -1,57 +1,66 @@
-import React, { useState, useEffect } from "react";
+import { useState, useEffect } from "react";
+import produce from "immer";
 
-import "./Game.scss";
 import { Button, Card, CardPanels, Timer } from "../../components";
-import { ICard, Status, ITabProps } from "../../ts/types";
+import { ICard, ITabProps } from "../../ts/types";
 import ButtonsWrapper from "../ButtonsWrapper/ButtonsWrapper";
 import { Controller } from "../../controller/Controller";
+import "./Game.scss";
 
-function Game({ label }: ITabProps): JSX.Element {
+export const Game = ({ label }: ITabProps) => {
   const [deck, setDeck] = useState<Array<ICard>>([]);
-  const [activeCards, setActiveCards] = useState<Array<string>>([]);
+  const [activeIds, setActiveIds] = useState<Array<string>>([]);
   const [visibleCards, setVisibleCards] = useState<Array<ICard>>([]);
 
   useEffect(() => {
-    let newDeck = Controller.createDeck();
+    const newDeck = Controller.createDeck();
     setDeck(newDeck.slice(12));
     setVisibleCards(newDeck.slice(0, 12));
   }, []);
 
   useEffect(() => {
-    if (activeCards.length === 3) {
-      if (Controller.check(activeCards as [string,string,string])) {
-        activeCards.forEach((cardId) => {
-          updateCardStatus(cardId, "Card-accepted");
-        });
-        setTimeout(() => {
-          if (visibleCards.length <= 12) {
-            replaceCards(activeCards);
-            setDeck(deck.slice(3));
-          } else {
-            removeCards(activeCards);
-          }
-        }, 300);
-      } else {
-        activeCards.map((card) => {
-          updateCardStatus(card, "Card-rejected");
-          setTimeout(() => {
-            updateCardStatus(card, "Card-inactive");
-          }, 300);
-        });
-      }
-      setActiveCards([]);
+    if (activeIds.length === 3) {
+      const indices = activeIds.map((id) =>
+        visibleCards.findIndex((card) => card.id === id)
+      );
+      Controller.check(activeIds as [string, string, string])
+        ? acceptCards(indices)
+        : rejectCards(indices);
+      setActiveIds([]);
     }
-  }, [activeCards]);
+  }, [activeIds]);
 
-  const handleButton = () => {
-    let set = Controller.checkAll(visibleCards.map(card => card.id));
-    if (set && deck.length > 0) {
-      setActiveCards(set);
-    } else if (deck.length > 0) {
-      addCards();
-    } else {
-      end();
-    }
+  const acceptCards = (indices: number[]) => {
+    setVisibleCards(
+      produce((draft) => {
+        for (const i of indices) draft[i].cardStatus = "Card-accepted";
+      })
+    );
+    setTimeout(() => {
+      visibleCards.length <= 12 && deck.length >= 3
+        ? replaceCards(indices)
+        : removeCards(indices);
+    }, 300);
+  };
+
+  const rejectCards = (indices: number[]) => {
+    setVisibleCards(
+      produce((draft) => {
+        for (const i of indices) draft[i].cardStatus = "Card-rejected";
+      })
+    );
+    setTimeout(() => {
+      setVisibleCards(
+        produce((draft) => {
+          for (const i of indices) draft[i].cardStatus = "Card-inactive";
+        })
+      );
+    }, 300);
+  };
+
+  const handleCheckButton = () => {
+    const set = Controller.checkAll(visibleCards.map((card) => card.id));
+    set ? setActiveIds(set) : deck.length > 0 ? addCards() : end();
   };
 
   const end = () => {
@@ -59,69 +68,46 @@ function Game({ label }: ITabProps): JSX.Element {
   };
 
   const addCards = () => {
-    const visibleCardsCopy = [...visibleCards];
-
-    for (let el of deck.slice(0, 3)) {
-      if (el) {
-        visibleCardsCopy.push(el);
-      }
-    }
-    setVisibleCards(visibleCardsCopy);
+    setVisibleCards(produce((draft) => [...draft, deck[0], deck[1], deck[2]]));
     setDeck(deck.slice(3));
   };
 
-  const replaceCards = (cards: Array<any>) => {
-    const visibleCardsCopy = [...visibleCards];
-    const deckFragment = deck.slice(0, 3);
-    let cardIndex, oldCard, newCard;
-
-    cards.forEach((cardId, i) => {
-      cardIndex = visibleCardsCopy.findIndex((card) => card.id === cardId);
-      oldCard = visibleCardsCopy[cardIndex];
-      if (deckFragment[i]) {
-        newCard = deckFragment[i];
-        Object.assign(oldCard, newCard);
-      } else {
-        removeCards(cards);
-        return;
-      }
-    });
-    setVisibleCards(visibleCardsCopy);
-  };
-
-  const removeCards = (cards: Array<any>) => {
-    const visibleCardsCopy = [...visibleCards];
-    let cardIndex;
-
-    cards.forEach((cardId) => {
-      cardIndex = visibleCardsCopy.findIndex((card) => card.id === cardId);
-      visibleCardsCopy.splice(cardIndex, 1);
-    });
-    setVisibleCards(visibleCardsCopy);
-  };
-
-  const handleCardClick = (e: React.MouseEvent<HTMLDivElement>) => {
-    const clickedCardId = e.currentTarget.dataset.id;
-    if (clickedCardId) {
-      if (Array.from(e.currentTarget.classList).includes("Card-active")) {
-        updateCardStatus(clickedCardId, "Card-inactive");
-        setActiveCards([
-          ...activeCards.filter((card) => card !== clickedCardId),
-        ]);
-      } else {
-        updateCardStatus(clickedCardId, "Card-active");
-        setActiveCards([...activeCards, clickedCardId]);
-      }
-    }
-  };
-
-  const updateCardStatus = (cardId: string, status: Status): void => {
-    const visibleCardsCopy = [...visibleCards];
-    const clickedCardIndex = visibleCardsCopy.findIndex(
-      (card) => card.id === cardId
+  const replaceCards = (indices: Array<number>) => {
+    setVisibleCards(
+      produce((draft) => {
+        draft[indices[0]] = deck[0];
+        draft[indices[1]] = deck[1];
+        draft[indices[2]] = deck[2];
+      })
     );
-    visibleCardsCopy[clickedCardIndex].cardStatus = status;
-    setVisibleCards(visibleCardsCopy);
+    setDeck(deck.slice(3));
+  };
+
+  const removeCards = (indices: Array<number>) => {
+    setVisibleCards(
+      produce((draft) => draft.filter((card, i) => !indices.includes(i)))
+    );
+  };
+
+  const handleCardClick = (cardId: string) => {
+    if (activeIds.includes(cardId)) {
+      setActiveIds(
+        produce((draft) => draft.filter((id: string) => id !== cardId))
+      );
+    } else {
+      setActiveIds(produce((draft) => [...draft, cardId]));
+    }
+
+    setVisibleCards(
+      produce((draft) => {
+        const i = draft.findIndex((card) => card.id === cardId);
+        if (draft[i].cardStatus === "Card-inactive") {
+          draft[i].cardStatus = "Card-active";
+        } else {
+          draft[i].cardStatus = "Card-inactive";
+        }
+      })
+    );
   };
 
   const renderVisibleCards = (cards: ICard[]) => {
@@ -141,11 +127,9 @@ function Game({ label }: ITabProps): JSX.Element {
     <div className="Game" data-id={label}>
       <CardPanels cards={visibleCards} renderCards={renderVisibleCards} />
       <ButtonsWrapper>
-        <Button onClick={handleButton}>find set</Button>
+        <Button onClick={handleCheckButton}>find set</Button>
         <Timer />
       </ButtonsWrapper>
     </div>
   );
 }
-
-export default Game;
